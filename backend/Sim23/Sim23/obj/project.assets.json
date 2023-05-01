@@ -1764,11 +1764,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\android dev\\Sim23\\Sim23\\Sim23.csproj",
+      "projectUniqueName": "D:\\android dev\\backend\\Sim23\\Sim23\\Sim23.csproj",
       "projectName": "Sim23",
-      "projectPath": "D:\\android dev\\Sim23\\Sim23\\Sim23.csproj",
+      "projectPath": "D:\\android dev\\backend\\Sim23\\Sim23\\Sim23.csproj",
       "packagesPath": "C:\\Users\\senag\\.nuget\\packages\\",
-      "outputPath": "D:\\android dev\\Sim23\\Sim23\\obj\\",
+      "outputPath": "D:\\android dev\\backend\\Sim23\\Sim23\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\senag\\AppData\\Roaming\\NuGet\\NuGet.Config",

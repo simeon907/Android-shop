@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NruVdZK/ddfXt9eUoJfDBo9p4HiH7yQ9u57Msk7UUxm7Nl5ZxUerglsa398/Ch9qrcnTqulgRsoKg5C7uWaAmQ==",
+  "dgSpecHash": "jueq947hWOcrc558mhFymqR1vZJg1MnceGSJd7fLIN4IyCGhEXpOvQsJ2KzKg+104w+fvwvIZtI5f6bc358HEg==",
   "success": true,
-  "projectFilePath": "D:\\android dev\\Sim23\\Sim23\\Sim23.csproj",
+  "projectFilePath": "D:\\android dev\\backend\\Sim23\\Sim23\\Sim23.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\senag\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\senag\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

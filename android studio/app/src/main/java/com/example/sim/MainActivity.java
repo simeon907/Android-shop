@@ -1,6 +1,5 @@
 package com.example.sim;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,7 +10,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.sim.category.CategoriesAdapter;
 import com.example.sim.dto.category.CategoryItemDTO;
-import com.example.sim.service.CategoryNetwork;
+import com.example.sim.service.ApplicationNetwork;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +43,7 @@ public class MainActivity extends BaseActivity {
     }
 
     void requestServer() {
-        CategoryNetwork
+        ApplicationNetwork
                 .getInstance()
                 .getJsonApi()
                 .list()

@@ -8,15 +8,18 @@ import android.provider.MediaStore;
 import android.util.Base64;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.sim.BaseActivity;
 import com.example.sim.ChangeImageActivity;
 import com.example.sim.MainActivity;
 import com.example.sim.R;
 import com.example.sim.dto.account.RegisterDTO;
+import com.example.sim.dto.account.ValidationRegisterDTO;
 import com.example.sim.service.ApplicationNetwork;
 import com.example.sim.utils.CommonUtils;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.gson.Gson;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -57,7 +60,7 @@ public class RegisterActivity extends BaseActivity {
         registerDTO.setEmail(txtEmail.getText().toString());
         registerDTO.setPassword(txtPassword.getText().toString());
         registerDTO.setConfirmPassword(txtConfirmPassword.getText().toString());
-        registerDTO.setPhoto(uriGetBase64(uri));
+        registerDTO.setImageBase64(uriGetBase64(uri));
         CommonUtils.showLoading();
         ApplicationNetwork.getInstance()
                 .getAccountApi()
@@ -65,9 +68,22 @@ public class RegisterActivity extends BaseActivity {
                 .enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
-                        Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                        startActivity(intent);
-                        finish();
+                        if(response.isSuccessful()){
+                            Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                        else{
+                            try {
+                                String resp = response.errorBody().string();
+                                showErrorsServer(resp);
+                            }
+                            catch (Exception ex){
+                                System.out.println("error try");
+                            }
+                        }
+
+
                         CommonUtils.hideLoading();
                     }
 
@@ -76,6 +92,17 @@ public class RegisterActivity extends BaseActivity {
                         CommonUtils.hideLoading();
                     }
                 });
+    }
+
+    private void showErrorsServer(String json) {
+        Gson gson = new Gson();
+        ValidationRegisterDTO result = gson.fromJson(json, ValidationRegisterDTO.class);
+        String str="";
+        if(result.getErrors().getEmail()!=null) {
+            for (String item: result.getErrors().getEmail())
+                str+=item;
+        }
+        Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
     }
 
     private String uriGetBase64(Uri uri) {
